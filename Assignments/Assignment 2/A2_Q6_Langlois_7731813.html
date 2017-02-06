@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 6</title>
+    </head>
+    <body>
+        <label>
+            Number
+            <input id="num" type="number" min="10000" max="99999" value="55555"/>
+        </label>
+        <br/>
+        <div id="results">
+            The number is a palindrome
+        </div>
+
+        <script>
+            var num = document.getElementById("num");
+            var results = document.getElementById("results");
+            var check = function() {
+                if (num.value.length != 5) {
+                    alert("You must enter a number of length 5");
+                } else {
+                    results.textContent = "The number is " + (num.value == num.value.split('').reverse().join('') ? "" : "not") + " a palindrome";
+                }
+            };
+            num.onkeyup = num.onmouseup = check;
+        </script>
+        <div class="animate"></div>
+    </body>
+</html>

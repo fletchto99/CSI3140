@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 4</title>
+        <style type="text/css">
+            .animate {
+                background-color: black;
+                height: 50px;
+                width: 50px;
+                position: relative;
+                animation: square 5s infinite;
+            }
+
+            @keyframes square {
+                0% {
+                    left: 0;
+                    top: 0;
+                }
+                25% {
+                    left: 200px;
+                    top: 0;
+                }
+                50% {
+                    left: 200px;
+                    top: 200px;
+                }
+                75% {
+                    left: 0;
+                    top: 200px;
+                }
+                100% {
+                    left: 0;
+                    top: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="animate"></div>
+    </body>
+</html>

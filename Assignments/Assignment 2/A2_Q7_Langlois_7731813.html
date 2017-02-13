@@ -46,7 +46,7 @@
         </table>
 
         <script>
-            var resultsBody = document.getElementById("ResultsBody");
+            //An object mapping the products to their quantities and prices
             var productsSold = [
                 {
                     price: 2.98,
@@ -70,14 +70,20 @@
                     quantity: 0
                 }
             ];
+
+            //prompt the user for some input
             var response = prompt("What is the product number? (1-5)", "product number");
+
+            //validate the input, pressing cancel closes the popup and displays the table
             while (response != null) {
+
+                //validate the number is legitimately a product number
                 if (isNaN(response) || parseInt(response) < 0 || parseInt(response) > 5) {
                     response = prompt("Invalid option! What is the product number? (1-5)", "product number");
                     continue;
                 }
 
-
+                //determine how many were purchased
                 var count = prompt("How many were purchased?", "Number purchased");
                 while (isNaN(count) || parseInt(count) < 0) {
                     if (count == null) {
@@ -86,6 +92,8 @@
                     count = prompt("How many were purchased? (>= 0)", "product number");
 
                 }
+
+                //if cancel is pressed display the results
                 if (count == null) {
                     break;
                 }
@@ -93,6 +101,9 @@
                 //could easily be simplified to:
                 // productsSold[chosen-1].quantity += parseInt(response);
 
+                //Instead a switch statement is used as per request of the assignment
+                //no need for a default case since hte guards above prevent any case outside
+                // of 1-5
                 switch (parseInt(response)) {
                     case 1:
                         productsSold[0].quantity += parseInt(count);
@@ -108,33 +119,36 @@
                         break;
                     case 5:
                         productsSold[4].quantity += parseInt(count);
-                        break;
-                    default:
-                        //should never happen since guards are in place
-                        response = prompt("Invalid option! What is the product number? (1-5)", "product number");
                 }
-                response = prompt("What is the product number? (1-5)", "product number");
 
+                //prompt for next product
+                response = prompt("What is the product number? (1-5)", "product number");
             }
+
+            //create the table
             productsSold.forEach(function(value, key) {
-                console.log(key);
-                console.log(value);
+
+                //for each item we want to create a row & container for the data
                 var row = document.createElement('tr');
                 var name = document.createElement('td');
                 var sold = document.createElement('td');
                 var pricePer = document.createElement('td');
                 var totalSales = document.createElement('td');
 
+                //Fill the table data in
                 name.textContent = "Product " + (key+1);
                 sold.textContent = value.quantity;
                 pricePer.textContent = value.price;
                 totalSales.textContent = value.price * value.quantity;
 
+                //Append the data to the row
                 row.appendChild(name);
                 row.appendChild(sold);
                 row.appendChild(pricePer);
                 row.appendChild(totalSales);
-                resultsBody.appendChild(row)
+
+                //append the row to the table body
+                ResultsBody.appendChild(row)
             });
         </script>
     </body>

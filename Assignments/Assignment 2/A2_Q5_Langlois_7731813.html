@@ -18,14 +18,14 @@
         </div>
 
         <script>
-            var num1 = document.getElementById("num1");
-            var num2 = document.getElementById("num2");
-            var results = document.getElementById("results");
-            var check = function() {
+            /*
+             * apply a function to the named elements to change the results.
+             * Also applied to mouseup event since the number picker in chrome
+             * fires a mouse up event when changed
+             */
+            num1.onkeyup = num2.onkeyup = num1.onmouseup = num2.onmouseup = function () {
                 results.textContent = "The first number is " + (num2.value % num1.value == 0 ? "" : "not") + " a multiple of the second";
-
             };
-            num1.onkeyup = num2.onkeyup = num1.onmouseup = num2.onmouseup = check;
         </script>
     </body>
 </html>

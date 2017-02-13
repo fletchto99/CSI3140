@@ -14,16 +14,20 @@
         </div>
 
         <script>
-            var num = document.getElementById("num");
-            var results = document.getElementById("results");
-            var check = function() {
+            /*
+             * apply a function to the named elements to change the results.
+             * To check if a the number is a palindrome simply check if the
+             * reverse of the word is equivalent
+             */
+            num.onkeyup = num.onmouseup = function () {
                 if (num.value.length != 5) {
                     alert("You must enter a number of length 5");
+                    //reset so they don't keep getting popups
+                    num.value = 55555;
                 } else {
                     results.textContent = "The number is " + (num.value == num.value.split('').reverse().join('') ? "" : "not") + " a palindrome";
                 }
             };
-            num.onkeyup = num.onmouseup = check;
         </script>
     </body>
 </html>

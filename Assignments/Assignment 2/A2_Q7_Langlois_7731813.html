@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 7</title>
+        <style type="text/css">
+
+            html, body {
+                font-family: Verdana, sans-serif;
+                font-size: 15px;
+                line-height: 1.5
+            }
+
+            table, td, th {
+                border: 1px solid #DDDDDD;
+                text-align: left;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                padding: 15px;
+            }
+
+            th > td {
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Num Sold</th>
+                    <th>Individual Price</th>
+                    <th>Total price</th>
+                </tr>
+            </thead>
+            <tbody id="ResultsBody">
+            </tbody>
+        </table>
+
+        <script>
+            var resultsBody = document.getElementById("ResultsBody");
+            var productsSold = [
+                {
+                    price: 2.98,
+                    quantity: 0
+                },
+                {
+
+                    price: 4.50,
+                    quantity: 0
+                },
+                {
+                    price: 9.98,
+                    quantity: 0
+                },
+                {
+                    price: 4.49,
+                    quantity: 0
+                },
+                {
+                    price: 6.87,
+                    quantity: 0
+                }
+            ];
+            var response = prompt("What is the product number? (1-5)", "product number");
+            while (response != null) {
+                if (isNaN(response) || parseInt(response) < 0 || parseInt(response) > 5) {
+                    response = prompt("Invalid option! What is the product number? (1-5)", "product number");
+                    continue;
+                }
+
+
+                var count = prompt("How many were purchased?", "Number purchased");
+                while (isNaN(count) || parseInt(count) < 0) {
+                    if (count == null) {
+                        break;
+                    }
+                    count = prompt("How many were purchased? (>= 0)", "product number");
+
+                }
+                if (count == null) {
+                    break;
+                }
+
+                //could easily be simplified to:
+                // productsSold[chosen-1].quantity += parseInt(response);
+
+                switch (parseInt(response)) {
+                    case 1:
+                        productsSold[0].quantity += parseInt(count);
+                        break;
+                    case 2:
+                        productsSold[1].quantity += parseInt(count);
+                        break;
+                    case 3:
+                        productsSold[2].quantity += parseInt(count);
+                        break;
+                    case 4:
+                        productsSold[3].quantity += parseInt(count);
+                        break;
+                    case 5:
+                        productsSold[4].quantity += parseInt(count);
+                        break;
+                    default:
+                        //should never happen since guards are in place
+                        response = prompt("Invalid option! What is the product number? (1-5)", "product number");
+                }
+                response = prompt("What is the product number? (1-5)", "product number");
+
+            }
+            productsSold.forEach(function(value, key) {
+                console.log(key);
+                console.log(value);
+                var row = document.createElement('tr');
+                var name = document.createElement('td');
+                var sold = document.createElement('td');
+                var pricePer = document.createElement('td');
+                var totalSales = document.createElement('td');
+
+                name.textContent = "Product " + (key+1);
+                sold.textContent = value.quantity;
+                pricePer.textContent = value.price;
+                totalSales.textContent = value.price * value.quantity;
+
+                row.appendChild(name);
+                row.appendChild(sold);
+                row.appendChild(pricePer);
+                row.appendChild(totalSales);
+                resultsBody.appendChild(row)
+            });
+        </script>
+    </body>
+</html>

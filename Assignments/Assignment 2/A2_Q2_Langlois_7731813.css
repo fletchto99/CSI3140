@@ -1,0 +1,29 @@
+.nav > .button {
+    width: 100px;
+    height: 20px;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav > .button:hover {
+    background-color: orange;
+    border-color: green;
+    border-radius: 1px;
+    color: black;
+}
+
+.nav {
+    text-decoration: none;
+}

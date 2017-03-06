@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 1</title>
+        <script type="application/javascript">
+            window.onload = () =>{
+                toFahrenheit.onclick = () => {
+                    results.textContent = `${start.value * 9 / 5 + 32} degrees fahrenheit`;
+                };
+
+                toCelsius.onclick = () => {
+                    results.textContent = `${(start.value - 32) * 5 / 9} degrees celsius`;
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <input type="number" step="0.01" id="start"/>
+        <input type="button" id="toCelsius" value="To Celsius"/>
+        <input type="button" id="toFahrenheit" value="To Fahrenheit"/>
+        <br/>
+        <span id="results"></span>
+    </body>
+</html>

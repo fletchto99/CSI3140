@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 2</title>
+        <script type="application/javascript">
+            window.onload = () =>{
+                //generates a random number between 1 and 1000
+                let number = Math.floor(Math.random() * 1000) + 1;
+                go.onclick = () => {
+                    //parse the user's guess
+                    let guess = parseInt(num.value);
+
+                    //check the guess and output the result
+                    if (guess != number) {
+                        result.textContent = `${guess > number ? "Too high" : "Too low"}. Try again`;
+                    } else {
+                        result.textContent = "Congratulations. You guessed the number!";
+                    }
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <input type="number" min="1" max="1000" id="num"/>
+        <span id="result">Guess a number between 1 and 1000</span><br/>
+        <input type="button" value="Guess" id="go"/>
+    </body>
+</html>

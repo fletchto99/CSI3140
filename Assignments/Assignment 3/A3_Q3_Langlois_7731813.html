@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 3</title>
+        <script type="application/javascript">
+            window.onload = () =>{
+                let number = Math.floor(Math.random() * 1000) + 1;
+                let guesses = 0;
+                go.onclick = () => {
+
+                    //validate the input is a number
+                    if (isNaN(num.value)) {
+                        result.textContent = "Wrong input! You should enter a number between 1 and 1000";
+                        return;
+                    }
+
+                    //parse the number
+                    let guess = parseInt(num.value);
+
+                    //check if the number is within the bounds
+                    if (guess > 1000 || guess < 1) {
+                        result.textContent = "Wrong input! You should enter a number between 1 and 1000";
+                        return;
+                    }
+
+                    if (guess != number) {
+                        result.textContent = `${guess > number ? "Too high" : "Too low"}. Try again`;
+                    } else {
+                        if (guesses < 10) {
+                            //less than 10 trys
+                            result.textContent = "“Either you know the secret or you got lucky!";
+                        } else if (guesses > 10) {
+                            //more than 10 trys
+                            result.textContent = "You should be able to do better!";
+                        } else {
+                            //they guessed it in 10 trys
+                            result.textContent = "Ahah! You know the secret!";
+                        }
+
+                    }
+                    guesses++;
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <input type="number" min="1" max="1000" id="num"/>
+        <span id="result">Guess a number between 1 and 1000</span><br/>
+        <input type="button" value="Guess" id="go"/>
+    </body>
+</html>

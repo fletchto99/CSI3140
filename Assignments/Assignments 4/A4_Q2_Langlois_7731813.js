@@ -8,6 +8,7 @@ window.onload = () => {
     let drawBoard = () => [].forEach.call(tiles, (item, index) => item.textContent = shuffled[index] != 16 ? shuffled[index] : "");
 
 
+
     //bind the click event to each of the tiles
     [].forEach.call(tiles, item => item.onclick = event => {
 
@@ -38,6 +39,21 @@ window.onload = () => {
                     shuffled[higher] = tmp;
                     selected.classList.remove('selected');
                     selected = null;
+
+                    //check for the win condition
+                    let win = true;
+                    for (let i = 1; i < shuffled.length; i++) {
+                        if (shuffled[i - 1] != i) {
+                            win = false;
+                            break;
+                        }
+                    }
+                    if (win) {
+                        //allow the user to play again if they won
+                        if (confirm('You win! Play again?')) {
+                            setup(shuffled);
+                        }
+                    }
 
                     //redraw the new board
                     drawBoard();
